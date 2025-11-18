@@ -28,8 +28,7 @@ public class ArraySummer extends RecursiveTask<Long> {
         ArraySummer rightTask = new ArraySummer(array, middle, end);
 
         leftTask.fork();
-        rightTask.fork();
-        Long rightResult = rightTask.join();
+        Long rightResult = rightTask.compute();
         Long leftResult = leftTask.join();
 
         return leftResult + rightResult;
